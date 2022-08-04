@@ -77,10 +77,7 @@ void lv_set_quit(lv_quit_event_t event)
 
 static void mouse_read(lv_indev_drv_t *indev_drv_gamepad, lv_indev_data_t *data)
 {
-    if (pad == NULL)
-    {
-        return;
-    }
+//    if (pad == NULL) return;
 
     data->state = (mouse_pressed) ? LV_INDEV_STATE_PRESSED : LV_INDEV_STATE_RELEASED;
 
@@ -94,7 +91,7 @@ static void mouse_read(lv_indev_drv_t *indev_drv_gamepad, lv_indev_data_t *data)
         mouse_event = false;
     }
     // From gamecontroller
-    else
+    else if (pad != NULL)
     {
         int x = SDL_GameControllerGetAxis(pad, SDL_CONTROLLER_AXIS_LEFTX);
         int y = SDL_GameControllerGetAxis(pad, SDL_CONTROLLER_AXIS_LEFTY);
